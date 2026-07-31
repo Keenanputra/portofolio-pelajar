@@ -1,13 +1,19 @@
 "use client";
 import { motion } from "motion/react";
-import { useEffect, useState, type ReactNode } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
+
+function subscribe(callback: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
+function getSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 export default function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
+  const reduced = useSyncExternalStore(subscribe, getSnapshot, () => false);
 
   if (reduced) return <>{children}</>;
 

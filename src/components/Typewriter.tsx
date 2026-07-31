@@ -1,5 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+function subscribe(callback: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
+function getSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 export default function Typewriter({
   words,
@@ -12,34 +22,34 @@ export default function Typewriter({
   deleteSpeed?: number;
   pause?: number;
 }) {
+  const reduced = useSyncExternalStore(subscribe, getSnapshot, () => false);
   const [index, setIndex] = useState(0);
   const [text, setText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setText(words[0]);
-      return;
-    }
+    if (reduced) return;
     const word = words[index % words.length];
     let timeout: ReturnType<typeof setTimeout>;
 
     if (!deleting && text === word) {
       timeout = setTimeout(() => setDeleting(true), pause);
     } else if (deleting && text === "") {
-      setDeleting(false);
-      setIndex((i) => (i + 1) % words.length);
+      timeout = setTimeout(() => {
+        setDeleting(false);
+        setIndex((i) => (i + 1) % words.length);
+      }, 0);
     } else {
       timeout = setTimeout(() => {
         setText(word.slice(0, text.length + (deleting ? -1 : 1)));
       }, deleting ? deleteSpeed : typeSpeed);
     }
     return () => clearTimeout(timeout);
-  }, [text, deleting, index, words, typeSpeed, deleteSpeed, pause]);
+  }, [text, deleting, index, words, typeSpeed, deleteSpeed, pause, reduced]);
 
   return (
     <span>
-      {text}
+      {reduced ? words[0] : text}
       <span className="animate-pulse text-accent">|</span>
     </span>
   );

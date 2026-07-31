@@ -21,3 +21,11 @@ Document here (and verify each item before adding):
 - Exact dev/test/lint commands and any required order.
 - Framework choice, entrypoints, and directory ownership.
 - Any non-default conventions (styling, state management, testing setup).
+
+## Commands
+
+- Dev server: `npm run dev`
+- Build: `npm run build`
+- Lint: `npm run lint`
+- Typecheck: `npx tsc --noEmit`
+- Test: `npm test` (Vitest)

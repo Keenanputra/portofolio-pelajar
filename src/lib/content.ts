@@ -58,7 +58,13 @@ export function getAllPosts(): PostSummary[] {
   return listFiles(BLOG_DIR)
     .map((f) => {
       const post = parsePostFile(f);
-      const { content: _content, ...summary } = post;
+      const summary: PostSummary = {
+        slug: post.slug,
+        title: post.title,
+        date: post.date,
+        description: post.description,
+        tags: post.tags,
+      };
       return summary;
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -78,7 +84,15 @@ export function getAllProjects(): ProjectSummary[] {
   return listFiles(PROJECT_DIR)
     .map((f) => {
       const project = parseProjectFile(f);
-      const { content: _content, ...summary } = project;
+      const summary: ProjectSummary = {
+        slug: project.slug,
+        title: project.title,
+        date: project.date,
+        description: project.description,
+        tags: project.tags,
+        image: project.image,
+        url: project.url,
+      };
       return summary;
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));

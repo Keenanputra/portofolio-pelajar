@@ -20,3 +20,7 @@ html {
   background: #22d3ee;
   color: #0a0a0f;
 }
+
+section[id] {
+  scroll-margin-top: 4rem;
+}

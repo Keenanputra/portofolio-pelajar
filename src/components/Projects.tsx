@@ -9,7 +9,7 @@ export default function Projects() {
     <section id="proyek" className="mx-auto max-w-5xl px-4 py-24">
       <Reveal>
         <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-          <span className="font-mono text-accent">04.</span> Proyek
+          <span className="font-mono text-accent">03.</span> Proyek
         </h2>
       </Reveal>
       <div className="mt-10 grid gap-6 sm:grid-cols-2">

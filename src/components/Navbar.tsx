@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const links = [
-  { href: "#tentang", label: "Tentang" },
-  { href: "#skill", label: "Skill" },
-  { href: "#proyek", label: "Proyek" },
-  { href: "#organisasi", label: "Organisasi" },
-  { href: "#blog", label: "Blog" },
-  { href: "#kontak", label: "Kontak" },
+  { id: "tentang", label: "Tentang" },
+  { id: "skill", label: "Skill" },
+  { id: "proyek", label: "Proyek" },
+  { id: "organisasi", label: "Organisasi" },
+  { id: "blog", label: "Blog" },
+  { id: "kontak", label: "Kontak" },
 ];
 
 export default function Navbar() {
@@ -32,7 +33,7 @@ export default function Navbar() {
       { rootMargin: "-40% 0px -55% 0px" }
     );
     for (const link of links) {
-      const el = document.getElementById(link.href.slice(1));
+      const el = document.getElementById(link.id);
       if (el) observer.observe(el);
     }
     return () => observer.disconnect();
@@ -45,9 +46,9 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-        <a href="#hero" className="font-mono text-sm font-semibold text-accent">
+        <Link href="/#hero" className="font-mono text-sm font-semibold text-accent">
           Keenan.dev
-        </a>
+        </Link>
         <button
           type="button"
           className="text-foreground sm:hidden"
@@ -59,11 +60,11 @@ export default function Navbar() {
         </button>
         <ul className={`gap-6 text-sm sm:flex ${open ? "absolute inset-x-0 top-full flex flex-col gap-4 border-b border-white/10 bg-background px-6 py-4" : "hidden"}`}>
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={link.id}>
               <a
-                href={link.href}
+                href={`/#${link.id}`}
                 onClick={() => setOpen(false)}
-                className={`transition hover:text-accent ${active === link.href ? "text-accent" : "text-muted"}`}
+                className={`transition hover:text-accent ${active === `#${link.id}` ? "text-accent" : "text-muted"}`}
               >
                 {link.label}
               </a>

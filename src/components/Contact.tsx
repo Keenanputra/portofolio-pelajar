@@ -7,7 +7,7 @@ export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState<ContactErrors>({});
+  const [errors, setErrors] = useState<ContactErrors & { global?: string }>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -21,11 +21,11 @@ export default function Contact() {
       body: JSON.stringify({ name, email, message }),
     });
     const data = (await res.json().catch(() => ({}))) as {
-      errors?: ContactErrors & { message?: string };
+      errors?: ContactErrors & { global?: string };
     };
 
     if (!res.ok) {
-      setErrors(data.errors ?? { message: "Gagal mengirim pesan. Coba lagi." });
+      setErrors(data.errors ?? { global: "Gagal mengirim pesan. Coba lagi." });
       setStatus("error");
       return;
     }
@@ -99,9 +99,9 @@ export default function Contact() {
               Pesan berhasil dikirim. Terima kasih!
             </p>
           )}
-          {status === "error" && errors.message && (
+          {status === "error" && errors.global && (
             <p className="rounded-lg border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm text-red-400">
-              {errors.message}
+              {errors.global}
             </p>
           )}
 

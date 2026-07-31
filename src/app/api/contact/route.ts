@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
   if (!process.env.FORMSPREE_FORM_ID) {
     return NextResponse.json(
-      { ok: false, errors: { message: "Form kontak belum dikonfigurasi. Tambahkan FORMSPREE_FORM_ID." } },
+      { ok: false, errors: { global: "Form kontak belum dikonfigurasi. Tambahkan FORMSPREE_FORM_ID." } },
       { status: 503 }
     );
   }
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
 
   if (!res.ok) {
     return NextResponse.json(
-      { ok: false, errors: { message: "Gagal mengirim pesan. Silakan coba lagi." } },
+      { ok: false, errors: { global: "Gagal mengirim pesan. Silakan coba lagi." } },
       { status: 502 }
     );
   }

@@ -26,7 +26,7 @@ export default function Organizations() {
     <section id="organisasi" className="mx-auto max-w-3xl px-4 py-24">
       <Reveal>
         <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-          <span className="font-mono text-accent">03.</span> Organisasi & Prestasi
+          <span className="font-mono text-accent">04.</span> Organisasi & Prestasi
         </h2>
       </Reveal>
       <ol className="mt-10 space-y-8 border-l border-white/10 pl-6">

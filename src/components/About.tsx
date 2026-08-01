@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 import Reveal from "./Reveal";
 
 export default function About() {
+  const [imageError, setImageError] = useState(false);
   return (
     <section id="tentang" className="mx-auto max-w-6xl px-4 py-24">
       <div className="grid gap-16 sm:grid-cols-2">
@@ -37,14 +40,36 @@ export default function About() {
                 <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-foreground/20 to-foreground/5 opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
                 
                 {/* Photo frame */}
-                <div className="relative h-40 w-40 sm:h-48 sm:w-48 rounded-full border-2 border-line bg-glass/30 p-1 backdrop-blur-sm transition-all duration-300 group-hover:border-foreground/30 group-hover:scale-105">
-                  <div className="h-full w-full rounded-full bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center">
-                    {/* Placeholder - akan diganti dengan foto real */}
-                    <div className="h-20 w-20 rounded-full bg-foreground/20 flex items-center justify-center">
-                      <svg className="h-10 w-10 text-foreground/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
+                <div className="relative h-32 w-32 sm:h-40 sm:w-40 lg:h-48 lg:w-48 rounded-full border-2 border-line bg-glass/30 p-1 backdrop-blur-sm transition-all duration-300 group-hover:border-foreground/30 group-hover:scale-105 profile-glow">
+                  <div className="h-full w-full rounded-full overflow-hidden">
+                    {!imageError ? (
+                      <Image
+                        src="/profile.jpg"
+                        alt="Potret Keenan, pelajar dan pengembang web yang suka membangun solusi digital"
+                        width={192}
+                        height={192}
+                        sizes="(max-width: 640px) 128px, (max-width: 1024px) 160px, 192px"
+                        className="h-full w-full object-cover"
+                        onError={() => setImageError(true)}
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center">
+                        <svg
+                          className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 text-foreground/40"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1}
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                          />
+                        </svg>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

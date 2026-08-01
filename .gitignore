@@ -38,3 +38,7 @@ next-env.d.ts
 
 # superpowers brainstorm scratch
 .superpowers/
+
+# local dev server logs
+dev-server.log
+dev-server.err.log

@@ -96,7 +96,7 @@ Konten diisi via file: `content/projects/nama.md` dan `content/blog/judul.md`. F
 
 - **Tema:** dark mode, aksen warna cerah (default cyan/violet, mudah diganti via token). Aksen dipakai konsisten pada link, highlight, dan tombol
 - **Starfield:** canvas partikel di hero, bintang bergerak pelan
-- **Typing effect:** kata kunci berulang di hero (mis. "Web Developer", "Desainer", "Mahasiswa") via hook React custom
+- **Typing effect:** kata kunci berulang di hero (mis. "Web Developer", "Desainer", "Pelajar") via hook React custom
 - **Scroll reveal:** fade + slide saat elemen masuk viewport (Framer Motion `whileInView`), dibungkus komponen `Reveal`
 - **Navbar:** sticky, transparan → blur saat scroll, link smooth scroll, highlight section aktif
 - **Form kontak:** validasi (format email, pesan minimal), state loading, pesan sukses/error

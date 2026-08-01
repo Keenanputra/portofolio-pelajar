@@ -37,18 +37,18 @@ export default function Contact() {
   }
 
   return (
-    <section id="kontak" className="mx-auto max-w-2xl px-4 py-24">
+    <section id="kontak" className="mx-auto max-w-lg px-4 py-16">
       <Reveal>
         <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
           <span className="font-mono text-muted">04.</span> Hubungi Saya
         </h2>
         <p className="mt-3 text-muted">
-          Punya pertanyaan, ide kolaborasi, atau sekadar menyapa? Kirim pesan lewat form ini.
+          Punya pertanyaan, ide kolaborasi, atau sekadar menyapa?
         </p>
       </Reveal>
 
       <Reveal delay={0.1}>
-        <div className="mt-10 rounded-3xl border border-line bg-glass p-8 backdrop-blur-xl shadow-2xl shadow-black/20">
+        <div className="mt-8 rounded-2xl border border-line bg-glass p-6 backdrop-blur-xl">
           <form onSubmit={handleSubmit} noValidate className="space-y-5">
             <div>
               <label htmlFor="nama" className="mb-1 block text-sm text-foreground">
@@ -60,7 +60,7 @@ export default function Contact() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-foreground outline-none transition focus:border-foreground focus:ring-1 focus:ring-foreground"
+                className="w-full rounded-lg border border-line bg-background px-3 py-2 text-foreground outline-none transition focus:border-foreground focus:ring-1 focus:ring-foreground"
               />
               {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
             </div>
@@ -75,7 +75,7 @@ export default function Contact() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-foreground outline-none transition focus:border-foreground focus:ring-1 focus:ring-foreground"
+                className="w-full rounded-lg border border-line bg-background px-3 py-2 text-foreground outline-none transition focus:border-foreground focus:ring-1 focus:ring-foreground"
               />
               {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
             </div>
@@ -87,21 +87,21 @@ export default function Contact() {
               <textarea
                 id="pesan"
                 name="pesan"
-                rows={5}
+                rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full resize-y rounded-xl border border-line bg-background px-4 py-3 text-foreground outline-none transition focus:border-foreground focus:ring-1 focus:ring-foreground"
+                className="w-full resize-y rounded-lg border border-line bg-background px-3 py-2 text-foreground outline-none transition focus:border-foreground focus:ring-1 focus:ring-foreground"
               />
               {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
             </div>
 
             {status === "sent" && (
-              <p className="rounded-xl border border-foreground/30 bg-foreground/10 px-4 py-3 text-sm text-foreground">
+              <p className="rounded-lg border border-foreground/30 bg-foreground/10 px-3 py-2 text-xs text-foreground">
                 Pesan berhasil dikirim. Terima kasih!
               </p>
             )}
             {status === "error" && errors.global && (
-              <p className="rounded-xl border border-red-400/30 bg-red-400/10 px-4 py-3 text-sm text-red-400">
+              <p className="rounded-lg border border-red-400/30 bg-red-400/10 px-3 py-2 text-xs text-red-400">
                 {errors.global}
               </p>
             )}
@@ -109,7 +109,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full rounded-xl bg-foreground px-6 py-3 font-semibold text-background transition hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {status === "sending" ? "Mengirim..." : "Kirim Pesan"}
             </button>

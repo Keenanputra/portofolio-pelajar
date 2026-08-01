@@ -62,3 +62,12 @@ section[id] {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* PROFILE PHOTO EFFECTS */
+.profile-glow {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.profile-glow:hover {
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.15);
+}

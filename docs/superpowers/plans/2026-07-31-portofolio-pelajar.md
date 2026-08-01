@@ -939,7 +939,7 @@ export default function Hero() {
         <p className="font-mono text-sm text-accent">Halo, saya</p>
         <h1 className="mt-2 text-5xl font-bold text-foreground sm:text-7xl">Keenan</h1>
         <p className="mt-4 text-xl text-muted sm:text-2xl">
-          <Typewriter words={["Web Developer", "Desainer", "Mahasiswa"]} />
+          <Typewriter words={["Web Developer", "Desainer", "Pelajar"]} />
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a

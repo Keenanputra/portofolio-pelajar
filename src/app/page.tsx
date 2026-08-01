@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Skills from "@/components/Skills";
+import SocialMedia from "@/components/SocialMedia";
 import Organizations from "@/components/Organizations";
 import Contact from "@/components/Contact";
 
@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <Skills />
+      <SocialMedia />
       <Organizations />
       <Contact />
     </>

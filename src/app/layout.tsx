@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Keenan — Portofolio",
-  description: "Portofolio pribadi Keenan — web developer, desainer, dan mahasiswa.",
+  description: "Portofolio pribadi Keenan — web developer, desainer, dan pelajar.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

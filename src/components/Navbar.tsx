@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const links = [
   { id: "tentang", label: "Tentang" },
-  { id: "skill", label: "Skill" },
+  { id: "sosmed", label: "Sosial Media" },
   { id: "organisasi", label: "Organisasi" },
   { id: "kontak", label: "Kontak" },
 ];

@@ -40,7 +40,7 @@ export default function Contact() {
     <section id="kontak" className="mx-auto max-w-xl px-4 py-24">
       <Reveal>
         <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-          <span className="font-mono text-accent">06.</span> Hubungi Saya
+          <span className="font-mono text-muted">04.</span> Hubungi Saya
         </h2>
         <p className="mt-3 text-muted">
           Punya pertanyaan, ide kolaborasi, atau sekadar menyapa? Kirim pesan lewat form ini.
@@ -59,7 +59,7 @@ export default function Contact() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-lg border border-white/10 bg-surface px-4 py-3 text-foreground outline-none transition focus:border-accent"
+              className="w-full rounded-2xl border border-line bg-glass px-4 py-3 text-foreground outline-none transition focus:border-accent focus:ring-1 focus:ring-accent backdrop-blur-xl"
             />
             {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
           </div>
@@ -74,7 +74,7 @@ export default function Contact() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-white/10 bg-surface px-4 py-3 text-foreground outline-none transition focus:border-accent"
+              className="w-full rounded-2xl border border-line bg-glass px-4 py-3 text-foreground outline-none transition focus:border-accent focus:ring-1 focus:ring-accent backdrop-blur-xl"
             />
             {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
           </div>
@@ -89,18 +89,18 @@ export default function Contact() {
               rows={5}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-full resize-y rounded-lg border border-white/10 bg-surface px-4 py-3 text-foreground outline-none transition focus:border-accent"
+              className="w-full resize-y rounded-2xl border border-line bg-glass px-4 py-3 text-foreground outline-none transition focus:border-accent focus:ring-1 focus:ring-accent backdrop-blur-xl"
             />
             {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
           </div>
 
           {status === "sent" && (
-            <p className="rounded-lg border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-accent">
+            <p className="rounded-2xl border border-accent/40 bg-glass px-4 py-3 text-sm text-foreground backdrop-blur-xl">
               Pesan berhasil dikirim. Terima kasih!
             </p>
           )}
           {status === "error" && errors.global && (
-            <p className="rounded-lg border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm text-red-400">
+            <p className="rounded-2xl border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm text-red-400">
               {errors.global}
             </p>
           )}
@@ -108,7 +108,7 @@ export default function Contact() {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="w-full rounded-lg bg-accent px-6 py-3 font-semibold text-background transition hover:bg-accent/80 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-2xl bg-foreground px-6 py-3 font-semibold text-background transition hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {status === "sending" ? "Mengirim..." : "Kirim Pesan"}
           </button>

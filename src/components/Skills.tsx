@@ -20,13 +20,13 @@ export default function Skills() {
     <section id="skill" className="mx-auto max-w-5xl px-4 py-24">
       <Reveal>
         <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-          <span className="font-mono text-accent">02.</span> Skill & Tech Stack
+          <span className="font-mono text-muted">02.</span> Skill & Tech Stack
         </h2>
       </Reveal>
       <div className="mt-10 grid gap-6 sm:grid-cols-3">
         {skillGroups.map((group, i) => (
           <Reveal key={group.title} delay={i * 0.1}>
-            <div className="h-full rounded-xl border border-white/10 bg-surface p-6">
+            <div className="h-full rounded-2xl border border-line bg-glass p-6 backdrop-blur-xl">
               <h3 className="font-semibold text-foreground">{group.title}</h3>
               <ul className="mt-4 space-y-2">
                 {group.items.map((item) => (

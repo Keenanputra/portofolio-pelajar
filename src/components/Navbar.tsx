@@ -40,11 +40,11 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "border-b border-white/10 bg-glass/80 backdrop-blur-xl" : "bg-transparent"
+        scrolled ? "border-b border-line bg-glass/80 backdrop-blur-xl" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-        <Link href="/#hero" className="font-mono text-sm font-semibold text-accent">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <Link href="/#hero" className="font-mono text-sm font-bold text-foreground">
           Keenan.dev
         </Link>
         <button
@@ -56,13 +56,13 @@ export default function Navbar() {
         >
           {open ? "✕" : "☰"}
         </button>
-        <ul className={`gap-6 text-sm sm:flex ${open ? "absolute inset-x-0 top-full flex flex-col gap-4 border-b border-white/10 bg-glass px-6 py-4 backdrop-blur-xl" : "hidden"}`}>
+        <ul className={`gap-6 text-sm sm:flex ${open ? "absolute inset-x-0 top-full flex flex-col gap-4 border-b border-line bg-glass px-6 py-4 backdrop-blur-xl" : "hidden"}`}>
           {links.map((link) => (
             <li key={link.id}>
               <a
                 href={`/#${link.id}`}
                 onClick={() => setOpen(false)}
-                className={`transition ${active === `#${link.id}` ? "text-accent font-semibold" : "text-muted hover:text-foreground"}`}
+                className={`transition ${active === `#${link.id}` ? "text-foreground font-semibold" : "text-muted hover:text-foreground"}`}
               >
                 {link.label}
               </a>

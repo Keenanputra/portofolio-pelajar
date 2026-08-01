@@ -17,21 +17,22 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section id="skill" className="mx-auto max-w-5xl px-4 py-24">
+    <section id="skill" className="mx-auto max-w-6xl px-4 py-24">
       <Reveal>
         <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
           <span className="font-mono text-muted">02.</span> Skill & Tech Stack
         </h2>
       </Reveal>
+
       <div className="mt-10 grid gap-6 sm:grid-cols-3">
         {skillGroups.map((group, i) => (
           <Reveal key={group.title} delay={i * 0.1}>
-            <div className="h-full rounded-2xl border border-line bg-glass p-6 backdrop-blur-xl">
+            <div className="h-full rounded-2xl border border-line bg-glass p-6 transition hover:border-foreground/30 hover:bg-glass-light backdrop-blur-xl">
               <h3 className="font-semibold text-foreground">{group.title}</h3>
               <ul className="mt-4 space-y-2">
                 {group.items.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-muted">
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
                     {item}
                   </li>
                 ))}

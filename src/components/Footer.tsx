@@ -7,12 +7,17 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="border-t border-line py-10">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 sm:flex-row">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 sm:flex-row">
         <p className="font-mono text-xs text-muted">© {new Date().getFullYear()} Keenan</p>
         <ul className="flex gap-6 text-sm">
           {socials.map((s) => (
             <li key={s.label}>
-              <a href={s.href} target="_blank" rel="noreferrer" className="text-muted transition hover:text-accent">
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted transition hover:text-foreground"
+              >
                 {s.label}
               </a>
             </li>

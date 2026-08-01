@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { MotionHeader } from "./MotionComponents";
 
 const links = [
   { id: "tentang", label: "Tentang" },
@@ -38,38 +39,82 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "border-b border-line bg-glass/80 backdrop-blur-xl" : "bg-transparent"
+    <MotionHeader
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 gpu-accelerated ${
+        scrolled ? "liquid-glass-nav shadow-lg shadow-black/10" : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link href="/#hero" className="font-mono text-sm font-bold text-foreground">
+        <Link 
+          href="/#hero" 
+          className="font-mono text-sm font-bold text-foreground hover:text-white transition-colors duration-300"
+        >
           Keenan.dev
         </Link>
-        <button
-          type="button"
-          className="text-foreground sm:hidden"
-          aria-label="Buka menu"
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? "✕" : "☰"}
-        </button>
-        <ul className={`gap-6 text-sm sm:flex ${open ? "absolute inset-x-0 top-full flex flex-col gap-4 border-b border-line bg-glass px-6 py-4 backdrop-blur-xl" : "hidden"}`}>
-          {links.map((link) => (
-            <li key={link.id}>
-              <a
-                href={`/#${link.id}`}
-                onClick={() => setOpen(false)}
-                className={`transition ${active === `#${link.id}` ? "text-foreground font-semibold" : "text-muted hover:text-foreground"}`}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            className="liquid-glass-accent p-2 text-foreground hover:text-white sm:hidden transition-colors duration-300"
+            aria-label="Buka menu"
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+          >
+            <svg 
+              className={`h-5 w-5 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              {open ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+          <ul className={`hidden sm:flex gap-1 text-sm transition-all duration-300`}>
+            {links.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`/#${link.id}`}
+                  onClick={() => setOpen(false)}
+                  className={`liquid-border-glow px-3 py-2 rounded-lg transition-all duration-300 block ${
+                    active === `#${link.id}` 
+                      ? "text-white font-semibold liquid-glass-accent" 
+                      : "text-muted hover:text-white hover:liquid-glass-light"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {open && (
+          <ul className="absolute inset-x-4 top-full flex flex-col gap-2 liquid-glass-medium rounded-2xl px-4 py-4 shadow-xl border border-white/10 sm:hidden">
+            {links.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`/#${link.id}`}
+                  onClick={() => setOpen(false)}
+                  className={`liquid-border-glow px-3 py-2.5 rounded-lg transition-all duration-300 block ${
+                    active === `#${link.id}` 
+                      ? "text-white font-semibold liquid-glass-accent" 
+                      : "text-muted hover:text-white hover:liquid-glass-light"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </nav>
-    </header>
+    </MotionHeader>
   );
 }

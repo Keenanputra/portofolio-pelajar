@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LiquidCursorTrail from "@/components/LiquidCursorTrail";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,13 +26,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id" className="scroll-smooth">
+    <html lang="id" className="dark scroll-smooth">
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased`}
       >
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <LiquidCursorTrail />
       </body>
     </html>
   );

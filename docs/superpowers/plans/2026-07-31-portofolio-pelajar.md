@@ -867,7 +867,7 @@ export default function Navbar() {
 
 ```tsx
 const socials = [
-  { label: "GitHub", href: "https://github.com/keenan13oc" },
+  { label: "GitHub", href: "" },
   { label: "LinkedIn", href: "https://linkedin.com/in/keenan13oc" },
   { label: "Instagram", href: "https://instagram.com/keenan13oc" },
 ];

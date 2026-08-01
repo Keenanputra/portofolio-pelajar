@@ -27,14 +27,17 @@ export default function Organizations() {
       <ol className="mt-10 space-y-8">
         {timeline.map((item, i) => (
           <Reveal key={item.period} delay={i * 0.1}>
-            <li className="relative pl-8 sm:pl-0">
-              {/* GLASS ORB MARKER */}
-              <div className="absolute -left-[24px] top-1 h-4 w-4 rounded-full border border-line bg-glass backdrop-blur-sm" />
+            <li className="relative pl-10 sm:pl-0 group">
+              {/* LIQUID GLASS ORB MARKER */}
+              <div className="absolute -left-[27px] top-1.5 h-5 w-5 rounded-full liquid-glass-medium border border-white/20 backdrop-blur-sm shadow-lg shadow-black/20 group-hover:border-white/40 group-hover:scale-125 transition-all duration-300 gpu-accelerated">
+                <div className="absolute inset-1 rounded-full bg-white/30 animate-pulse" />
+              </div>
+              
               <div className="sm:flex sm:items-center sm:gap-6">
                 <p className="font-mono text-xs text-muted sm:w-24">{item.period}</p>
-                <div>
-                  <h3 className="font-semibold text-foreground">{item.role}</h3>
-                  <p className="text-sm text-muted">{item.org}</p>
+                <div className="liquid-glass-card group-hover:border-white/30 p-5 sm:p-4 sm:flex-1">
+                  <h3 className="font-semibold text-foreground transition-colors duration-300 group-hover:text-white">{item.role}</h3>
+                  <p className="text-sm text-muted group-hover:text-neutral-300 transition-colors duration-300">{item.org}</p>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
                 </div>
               </div>

@@ -20,10 +20,22 @@ export default function About() {
             Di luar coding, saya aktif di organisasi sekolah dan mendokumentasikan
             perjalanan belajar saya.
           </p>
+          
+          {/* Interactive skill badges */}
+          <div className="mt-8 flex flex-wrap gap-2">
+            {["Next.js", "React", "Tailwind CSS", "TypeScript", "UI/UX"].map((skill) => (
+              <span
+                key={skill}
+                className="liquid-glass-accent px-3 py-1.5 text-xs font-medium text-neutral-300 hover:text-white hover:scale-105 transition-all duration-300 cursor-default gpu-accelerated"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative h-80 w-full max-w-sm mx-auto overflow-hidden rounded-3xl border border-line bg-glass/50 backdrop-blur-xl">
+          <div className="relative h-96 w-full max-w-sm mx-auto overflow-hidden rounded-3xl liquid-glass-medium border border-white/10">
             {/* Background blur patterns */}
             <div className="absolute inset-0 bg-gradient-to-br from-foreground/10 to-transparent" />
             <div className="absolute inset-0 opacity-30">
@@ -34,22 +46,22 @@ export default function About() {
             
             {/* Profile content */}
             <div className="relative z-10 flex h-full flex-col items-center justify-center p-6">
-              {/* Profile Photo Container */}
+              {/* Profile Photo Container - Optimized for portrait aspect ratio */}
               <div className="group relative mb-4">
                 {/* Outer glass ring dengan hover glow */}
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-foreground/20 to-foreground/5 opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-foreground/20 to-foreground/5 opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
                 
-                {/* Photo frame */}
-                <div className="relative h-32 w-32 sm:h-40 sm:w-40 lg:h-48 lg:w-48 rounded-full border-2 border-line bg-glass/30 p-1 backdrop-blur-sm transition-all duration-300 group-hover:border-foreground/30 group-hover:scale-105 profile-glow">
-                  <div className="h-full w-full rounded-full overflow-hidden">
+                {/* Photo frame - Portrait ratio 3:4 */}
+                <div className="relative w-40 sm:w-44 lg:w-48 rounded-2xl border-2 border-white/15 liquid-glass-light p-1.5 backdrop-blur-sm transition-all duration-300 group-hover:border-white/40 group-hover:scale-105 profile-glow overflow-hidden">
+                  <div className="relative h-52 sm:h-56 lg:h-60 w-full rounded-xl overflow-hidden">
                     {!imageError ? (
                       <Image
                         src="/profile.jpg"
                         alt="Potret Keenan, pelajar dan pengembang web yang suka membangun solusi digital"
                         width={192}
-                        height={192}
-                        sizes="(max-width: 640px) 128px, (max-width: 1024px) 160px, 192px"
-                        className="h-full w-full object-cover"
+                        height={240}
+                        sizes="(max-width: 640px) 160px, (max-width: 1024px) 176px, 192px"
+                        className="h-full w-full object-cover object-top"
                         onError={() => setImageError(true)}
                       />
                     ) : (

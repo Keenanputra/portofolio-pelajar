@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useScroll, useTransform } from "motion/react";
 
 function subscribe(callback: () => void) {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -18,12 +19,24 @@ type Particle = {
   vy: number;
   size: number;
   opacity: number;
+  baseSize: number;
+  baseOpacity: number;
 };
 
 export default function ParticleSystem() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduced = useSyncExternalStore(subscribe, getSnapshot, () => false);
   const particles = useRef<Particle[]>([]);
+  const scrollOffset = useRef(0);
+
+  // Scroll-driven effect: particle density and movement react to scroll
+  const { scrollYProgress } = useScroll();
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (value) => {
+      scrollOffset.current = value;
+    });
+  }, [scrollYProgress]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -50,6 +63,8 @@ export default function ParticleSystem() {
         vy: (Math.random() - 0.5) * 0.3,
         size: Math.random() * 2 + 0.5,
         opacity: Math.random() * 0.05 + 0.02,
+        baseSize: Math.random() * 2 + 0.5,
+        baseOpacity: Math.random() * 0.05 + 0.02,
       }));
     };
 
@@ -57,9 +72,11 @@ export default function ParticleSystem() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "#ffffff";
 
+      const scrollFactor = 1 + scrollOffset.current * 1.5;
+
       particles.current.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
+        p.x += p.vx * scrollFactor;
+        p.y += p.vy * scrollFactor;
 
         // Wrap around
         if (p.x < 0) p.x = canvas.width;
@@ -67,9 +84,14 @@ export default function ParticleSystem() {
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        ctx.globalAlpha = p.opacity;
+        // Morph based on scroll - particles grow and glow as user scrolls
+        const morphScale = 1 + scrollOffset.current * 0.5;
+        const currentSize = p.baseSize * morphScale;
+        const currentOpacity = Math.min(0.2, p.baseOpacity * (1 + scrollOffset.current));
+
+        ctx.globalAlpha = currentOpacity;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
         ctx.fill();
       });
 

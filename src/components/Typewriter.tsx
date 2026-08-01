@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { MotionSpan } from "./MotionComponents";
 
 function subscribe(callback: () => void) {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -48,9 +49,15 @@ export default function Typewriter({
   }, [text, deleting, index, words, typeSpeed, deleteSpeed, pause, reduced]);
 
   return (
-    <span>
+    <MotionSpan layout>
       {reduced ? words[0] : text}
-      <span className="animate-pulse text-accent">|</span>
-    </span>
+      <MotionSpan 
+        className="text-white/60"
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        |
+      </MotionSpan>
+    </MotionSpan>
   );
 }

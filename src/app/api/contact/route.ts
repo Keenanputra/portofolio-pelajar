@@ -9,20 +9,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, errors: result.errors }, { status: 400 });
   }
 
-   if (!process.env.FORMSPREE_FORM_ID) {
-     return NextResponse.json(
-       { ok: false, errors: { global: "Form kontak belum dikonfigurasi. Tambahkan FORMSPREE_FORM_ID." } },
-       { status: 503 }
-     );
-   }
+  const form = new URLSearchParams({
+    name: result.data.name,
+    email: result.data.email,
+    message: result.data.message,
+  });
 
-   const form = new URLSearchParams({
-     name: result.data.name,
-     email: result.data.email,
-     message: result.data.message,
-   });
-
-   const res = await fetch(`https://formspree.io/f/mgogjdrl`, {
+  const res = await fetch(`https://formspree.io/f/mgogjdrl`, {
     method: "POST",
     headers: {
       Accept: "application/json",

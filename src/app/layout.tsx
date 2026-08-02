@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import LiquidCursorTrail from "@/components/LiquidCursorTrail";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +32,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <LiquidCursorTrail />
       </body>
     </html>
   );

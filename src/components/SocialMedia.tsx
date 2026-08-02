@@ -46,20 +46,20 @@ export default function SocialMedia() {
               rel="noreferrer"
               className="liquid-glass-card group block p-6 text-center gpu-accelerated"
               whileHover={{ 
-                scale: 1.02,
-                filter: "brightness(1.1)",
-                boxShadow: "0 20px 40px rgba(255,255,255,0.1)"
+                scale: 1.01,
+                filter: "brightness(1.05)",
+                boxShadow: "0 15px 30px rgba(255,255,255,0.08)"
               }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              whileTap={{ scale: 0.99 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
             >
               <MotionDiv 
                 className="liquid-glass-icon-container"
                 whileHover={{ 
-                  scale: 1.1,
-                  boxShadow: "0 0 20px rgba(255,255,255,0.3)" 
+                  scale: 1.05,
+                  boxShadow: "0 0 15px rgba(255,255,255,0.2)" 
                 }}
-                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                transition={{ type: "spring", stiffness: 450, damping: 35 }}
               >
                 {social.name === "GitHub" && (
                   <svg className="h-6 w-6 text-foreground" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

@@ -153,17 +153,6 @@ section[id] {
 }
 
 /* ANIMATIONS & TRANSITIONS */
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -180,10 +169,6 @@ section[id] {
   50% {
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
   }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out 0.5s both;
 }
 
 .animate-float {

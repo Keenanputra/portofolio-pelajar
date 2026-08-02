@@ -54,7 +54,7 @@ export default function Typewriter({
       <MotionSpan 
         className="text-white/60"
         animate={{ opacity: [1, 0, 1] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        transition={{ duration: 1.8, repeat: Infinity }}
       >
         |
       </MotionSpan>

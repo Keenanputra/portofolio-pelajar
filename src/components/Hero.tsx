@@ -15,9 +15,9 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/20 to-black/40 z-5" />
 
       <div className="relative z-10 flex flex-col items-center justify-center px-4 text-center max-w-4xl mx-auto">
-        <p className="font-mono text-xs uppercase tracking-widest text-white/60 mb-4 animate-fade-in">
-          Halo, saya
-        </p>
+        <div className="liquid-glass-subtle rounded-full px-6 py-3 mb-6 inline-block border border-white/8">
+          <p className="font-mono text-sm text-muted animate-pulse">Halo, saya</p>
+        </div>
 
         <MotionH1 
           className="text-4xl sm:text-6xl lg:text-8xl font-bold text-foreground tracking-tight mb-6"
@@ -32,8 +32,8 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ 
-                  duration: 0.1, 
-                  delay: i * 0.1,
+                  duration: 0.15, 
+                  delay: i * 0.15,
                   ease: "easeOut"
                 }}
               >

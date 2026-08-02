@@ -119,9 +119,9 @@ export default function Contact() {
               type="submit"
               disabled={status === "sending"}
               className="w-full liquid-glass-accent px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-xl hover:shadow-white/10 disabled:cursor-not-allowed disabled:opacity-50 gpu-accelerated"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              transition={{ type: "spring", stiffness: 450, damping: 35 }}
             >
               {status === "sending" ? (
                 <span className="flex items-center justify-center gap-2">
